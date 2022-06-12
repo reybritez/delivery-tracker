@@ -17,7 +17,7 @@ CREATE TABLE post (
   FOREIGN KEY (author_id) REFERENCES user (id)
 );
 
-CREATE TABLE pedidos (
+CREATE TABLE pedido (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   nombre_cliente TEXT UNIQUE NOT NULL,
   estado_cocina BOOLEAN,
@@ -26,5 +26,5 @@ CREATE TABLE pedidos (
   fecha_de_pedido TEXT UNIQUE NOT NULL
 );
 
-INSERT INTO pedidos(nombre_cliente,estado_cocina, estado_entrega, forma_de_pago, fecha_de_pedido) 
+INSERT INTO pedido(nombre_cliente,estado_cocina, estado_entrega, forma_de_pago, fecha_de_pedido) 
 VALUES ('Juan',true,false,'Efectivo','2020-01-01');

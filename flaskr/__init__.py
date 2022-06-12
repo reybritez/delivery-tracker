@@ -28,7 +28,13 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    from . import db
-    db.init_app(app)
+    @app.route('/holi')
+    def holi():
+        return 'Holi Stevencin!'
 
+    from . import db, auth, blog
+    db.init_app(app)
+    app.register_blueprint(auth.bp)
+    app.register_blueprint(blog.bp)
+    app.add_url_rule('/', endpoint='index')
     return app
