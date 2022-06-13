@@ -1,1 +1,1 @@
-web: gunicorn flaskr:blog
+web: gunicorn flaskr:wsgi:blog
