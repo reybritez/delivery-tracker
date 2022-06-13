@@ -1,4 +1,4 @@
-import blog 
+from flaskr import blog 
  
 if __name__ == "__main__":
     blog.run()
