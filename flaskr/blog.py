@@ -102,5 +102,7 @@ def blog():
 
 @bp.route('/api')
 def api():
-    
+    server_key = "aDZtFNxtPm7RIuTIz5XvtbNpigZ7Em6gP"
+    restaurant_token= "d3l1saj0" 
+    peticion = "Hola"
     return render_template('blog/api.html', peticion=peticion)
