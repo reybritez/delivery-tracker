@@ -118,6 +118,13 @@ def api():
     resp = requests.post(url, headers=headers)
     print(resp) 
     resp = resp.json()
-    print(resp)
+    print(resp['orders'])
 
-    return render_template('blog/api.html', resp=resp)
+    return resp
+
+@bp.route('/muestra')
+def muestra():
+    obtencion = requests.get('https://delivery-trackerpy.herokuapp.com/api')
+    obtencion = obtencion.json()
+    print(obtencion)
+    return render_template('blog/api.html', obtencion=obtencion)
