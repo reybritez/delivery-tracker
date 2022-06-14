@@ -2,9 +2,10 @@ from flask import (
     Blueprint, flash, g, redirect, render_template, request, url_for
 )
 from werkzeug.exceptions import abort
-
 from flaskr.auth import login_required
 from flaskr.db import get_db
+import requests 
+from requests.structures import CaseInsensitiveDict
 
 bp = Blueprint('blog', __name__, template_folder='templates')
 
@@ -104,5 +105,19 @@ def blog():
 def api():
     server_key = "aDZtFNxtPm7RIuTIz5XvtbNpigZ7Em6gP"
     restaurant_token= "d3l1saj0" 
-    peticion = "Hola"
-    return render_template('blog/api.html', peticion=peticion)
+    restaurant_key = "vaJ1Dtz7JswbvvyOOY"
+
+    url = "https://pos.globalfoodsoft.com/pos/order/pop"
+
+    headers = CaseInsensitiveDict()
+    headers["Authorization"] = restaurant_key
+    headers["Accept"] = "application/json"
+    headers["Glf-Api-Version"] = "2"
+
+
+    resp = requests.post(url, headers=headers)
+    print(resp.status_code) 
+    resp = resp.json()
+    print(resp)
+
+    return render_template('blog/api.html', resp=resp)
