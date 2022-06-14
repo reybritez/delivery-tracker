@@ -105,7 +105,7 @@ def blog():
 def api():
     server_key = "aDZtFNxtPm7RIuTIz5XvtbNpigZ7Em6gP"
     restaurant_token= "d3l1saj0" 
-    restaurant_key = "w4JnMsRP6COEwe1VYN"
+    restaurant_key = "M4RMbs8PoSnYYVD54"
 
     url = "https://pos.globalfoodsoft.com/pos/order/pop"
 
