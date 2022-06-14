@@ -113,10 +113,10 @@ def api():
     headers["Authorization"] = restaurant_key
     headers["Accept"] = "application/json"
     headers["Glf-Api-Version"] = "2"
-
+    print(headers)
 
     resp = requests.post(url, headers=headers)
-    print(resp.status_code) 
+    print(resp) 
     resp = resp.json()
     print(resp)
 
