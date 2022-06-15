@@ -101,13 +101,20 @@ def blog():
     ).fetchall()
     return render_template('blog/index.html', posts=posts)
 
-@bp.route('/api')
+@bp.route('/api', methods=["POST"])
 def api():
+    data = request.json
+    print(f'A ver si que pasa: {data}')
+    return data
+
+@bp.route('/muestra', methods=["POST"])
+def muestra():
+
     server_key = "aDZtFNxtPm7RIuTIz5XvtbNpigZ7Em6gP"
     restaurant_token= "d3l1saj0" 
-    restaurant_key = "M4RMbs8PoSnYYVD54"
+    restaurant_key = "w4JnMsRP6COEwe1VYN"
 
-    url = "https://pos.globalfoodsoft.com/pos/order/pop"
+    url = "https://delivery-trackerpy.herokuapp.com/api"
 
     headers = CaseInsensitiveDict()
     headers["Authorization"] = restaurant_key
@@ -120,11 +127,7 @@ def api():
     resp = resp.json()
     print(resp['orders'])
 
-    return resp
-
-@bp.route('/muestra')
-def muestra():
     obtencion = requests.get('https://delivery-trackerpy.herokuapp.com/api')
     obtencion = obtencion.json()
     print(obtencion)
-    return render_template('blog/api.html', obtencion=obtencion)
+    return render_template('blog/api.html', obtencion=resp)
