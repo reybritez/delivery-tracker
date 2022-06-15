@@ -101,13 +101,13 @@ def blog():
     ).fetchall()
     return render_template('blog/index.html', posts=posts)
 
-@bp.route('/api', methods=["POST"])
+@bp.route('/api', methods=["GET","POST"])
 def api():
     data = request.json
     print(f'A ver si que pasa: {data}')
     return data
 
-@bp.route('/muestra', methods=["POST"])
+@bp.route('/muestra', methods=["GET","POST"])
 def muestra():
 
     server_key = "aDZtFNxtPm7RIuTIz5XvtbNpigZ7Em6gP"
